@@ -6,20 +6,20 @@
 const db = require('../db');
 
 const LIGHTSABER_COLORS = {
-  'Luke Skywalker': { color: 'Green', affiliation: 'Jedi' },
-  'Darth Vader': { color: 'Red', affiliation: 'Sith' },
-  'Obi-Wan Kenobi': { color: 'Blue', affiliation: 'Jedi' },
-  'Yoda': { color: 'Green', affiliation: 'Jedi' },
-  'Anakin Skywalker': { color: 'Blue', affiliation: 'Jedi (later Sith)' },
-  'Qui-Gon Jinn': { color: 'Green', affiliation: 'Jedi' },
-  'Count Dooku': { color: 'Red', affiliation: 'Sith' },
-  'Mace Windu': { color: 'Purple', affiliation: 'Jedi' },
-  'Ki-Adi-Mundi': { color: 'Blue', affiliation: 'Jedi' },
-  'Plo Koon': { color: 'Blue', affiliation: 'Jedi' },
-  'Luminara Unduli': { color: 'Green', affiliation: 'Jedi' },
-  'Barriss Offee': { color: 'Green', affiliation: 'Jedi' },
-  'Shaak Ti': { color: 'Yellow', affiliation: 'Jedi' },
-  'Kit Fisto': { color: 'Green', affiliation: 'Jedi' }
+  'Luke Skywalker': { color: 'Green', affiliation: 'Jedi', hilt_type: 'Single-bladed' },
+  'Darth Vader': { color: 'Red', affiliation: 'Sith', hilt_type: 'Single-bladed' },
+  'Obi-Wan Kenobi': { color: 'Blue', affiliation: 'Jedi', hilt_type: 'Single-bladed' },
+  'Yoda': { color: 'Green', affiliation: 'Jedi', hilt_type: 'Single-bladed (shoto)' },
+  'Anakin Skywalker': { color: 'Blue', affiliation: 'Jedi (later Sith)', hilt_type: 'Single-bladed' },
+  'Qui-Gon Jinn': { color: 'Green', affiliation: 'Jedi', hilt_type: 'Single-bladed' },
+  'Count Dooku': { color: 'Red', affiliation: 'Sith', hilt_type: 'Curved-hilt' },
+  'Mace Windu': { color: 'Purple', affiliation: 'Jedi', hilt_type: 'Single-bladed' },
+  'Ki-Adi-Mundi': { color: 'Blue', affiliation: 'Jedi', hilt_type: 'Single-bladed' },
+  'Plo Koon': { color: 'Blue', affiliation: 'Jedi', hilt_type: 'Single-bladed' },
+  'Luminara Unduli': { color: 'Green', affiliation: 'Jedi', hilt_type: 'Single-bladed' },
+  'Barriss Offee': { color: 'Green', affiliation: 'Jedi', hilt_type: 'Single-bladed' },
+  'Shaak Ti': { color: 'Yellow', affiliation: 'Jedi', hilt_type: 'Single-bladed' },
+  'Kit Fisto': { color: 'Green', affiliation: 'Jedi', hilt_type: 'Single-bladed' }
 };
 
 const BASE_URL = 'https://www.swapi.tech/api/people';
@@ -50,8 +50,8 @@ async function run() {
   console.log(`Fetched ${people.length} characters from SWAPI.`);
 
   const insert = db.prepare(`
-    INSERT OR IGNORE INTO characters (name, lightsaber_color, affiliation)
-    VALUES (@name, @lightsaber_color, @affiliation)
+    INSERT OR IGNORE INTO characters (name, lightsaber_color, affiliation, hilt_type)
+    VALUES (@name, @lightsaber_color, @affiliation, @hilt_type)
   `);
 
   let added = 0;
@@ -65,7 +65,8 @@ async function run() {
     const result = insert.run({
       name,
       lightsaber_color: match.color,
-      affiliation: match.affiliation
+      affiliation: match.affiliation,
+      hilt_type: match.hilt_type || null
     });
     if (result.changes > 0) added++;
   }

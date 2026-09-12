@@ -23,14 +23,14 @@ app.get('/api/characters/:id', (req, res) => {
 
 // POST new character
 app.post('/api/characters', (req, res) => {
-  const { name, lightsaber_color, affiliation } = req.body;
+  const { name, lightsaber_color, affiliation, hilt_type } = req.body;
   if (!name || !lightsaber_color) {
     return res.status(400).json({ error: 'name and lightsaber_color are required' });
   }
   try {
     const result = db.prepare(
-      'INSERT INTO characters (name, lightsaber_color, affiliation) VALUES (?, ?, ?)'
-    ).run(name, lightsaber_color, affiliation || null);
+      'INSERT INTO characters (name, lightsaber_color, affiliation, hilt_type) VALUES (?, ?, ?, ?)'
+    ).run(name, lightsaber_color, affiliation || null, hilt_type || null);
     const newCharacter = db.prepare('SELECT * FROM characters WHERE id = ?').get(result.lastInsertRowid);
     res.status(201).json(newCharacter);
   } catch (err) {
@@ -43,16 +43,17 @@ app.post('/api/characters', (req, res) => {
 
 // PUT update character
 app.put('/api/characters/:id', (req, res) => {
-  const { name, lightsaber_color, affiliation } = req.body;
+  const { name, lightsaber_color, affiliation, hilt_type } = req.body;
   const existing = db.prepare('SELECT * FROM characters WHERE id = ?').get(req.params.id);
   if (!existing) return res.status(404).json({ error: 'Character not found' });
 
   db.prepare(
-    'UPDATE characters SET name = ?, lightsaber_color = ?, affiliation = ? WHERE id = ?'
+    'UPDATE characters SET name = ?, lightsaber_color = ?, affiliation = ?, hilt_type = ? WHERE id = ?'
   ).run(
     name ?? existing.name,
     lightsaber_color ?? existing.lightsaber_color,
     affiliation ?? existing.affiliation,
+    hilt_type ?? existing.hilt_type,
     req.params.id
   );
 
