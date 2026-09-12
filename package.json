@@ -1,0 +1,14 @@
+{
+  "name": "star-wars-lightsabers",
+  "version": "1.0.0",
+  "description": "A trivial full-stack app tracking Star Wars characters and their lightsaber colors",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "better-sqlite3": "^11.3.0",
+    "express": "^4.19.2"
+  }
+}
