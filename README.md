@@ -6,7 +6,9 @@ and the color of their lightsabers. Built with Node.js, Express, and SQLite.
 ## Features
 - REST API backed by a local SQLite database
 - Pre-seeded with a handful of familiar Jedi and Sith
-- Simple web UI to view, add, and remove characters
+- Tracks lightsaber color *and* hilt type (single-bladed, double-bladed,
+  crossguard, curved-hilt, dual-wield)
+- Web UI to view, add, remove, search, and sort characters
 
 ## Tech stack
 - **Backend:** Node.js + Express
@@ -37,7 +39,12 @@ with a few characters.
 A `POST`/`PUT` body looks like:
 
 ```json
-{ "name": "Anakin Skywalker", "lightsaber_color": "Blue", "affiliation": "Jedi" }
+{
+  "name": "Anakin Skywalker",
+  "lightsaber_color": "Blue",
+  "hilt_type": "Single-bladed",
+  "affiliation": "Jedi"
+}
 ```
 
 ## Populating more characters
