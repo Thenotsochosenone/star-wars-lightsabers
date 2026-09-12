@@ -19,7 +19,10 @@ const LIGHTSABER_COLORS = {
   'Luminara Unduli': { color: 'Green', affiliation: 'Jedi', hilt_type: 'Single-bladed' },
   'Barriss Offee': { color: 'Green', affiliation: 'Jedi', hilt_type: 'Single-bladed' },
   'Shaak Ti': { color: 'Yellow', affiliation: 'Jedi', hilt_type: 'Single-bladed' },
-  'Kit Fisto': { color: 'Green', affiliation: 'Jedi', hilt_type: 'Single-bladed' }
+  'Kit Fisto': { color: 'Green', affiliation: 'Jedi', hilt_type: 'Single-bladed' },
+  'Bastila Shan': { color: 'White', affiliation: 'Jedi', hilt_type: 'Single-bladed' },
+  'Revan': { color: 'Red', affiliation: 'Sith', hilt_type: 'Single-bladed' },
+  'Kal Kestis': { color: 'Blue', affiliation: 'Jedi', hilt_type: 'Single-bladed' }
 };
 
 const BASE_URL = 'https://www.swapi.tech/api/people';
