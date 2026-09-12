@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lightsaber Registry</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>⚔️ Lightsaber Registry</h1>
+    <p class="subtitle">A totally official database of who's swinging what color.</p>
+
+    <form id="add-form">
+      <input type="text" id="name" placeholder="Character name" required>
+      <input type="text" id="color" placeholder="Lightsaber color" required>
+      <input type="text" id="affiliation" placeholder="Affiliation (optional)">
+      <button type="submit">Add Character</button>
+    </form>
+
+    <div id="character-list" class="character-list"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
