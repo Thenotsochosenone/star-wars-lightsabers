@@ -4,7 +4,8 @@
   "description": "A trivial full-stack app tracking Star Wars characters and their lightsaber colors",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "import": "node scripts/import-characters.js"
   },
   "license": "MIT",
   "dependencies": {

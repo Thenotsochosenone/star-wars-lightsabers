@@ -40,6 +40,23 @@ A `POST`/`PUT` body looks like:
 { "name": "Anakin Skywalker", "lightsaber_color": "Blue", "affiliation": "Jedi" }
 ```
 
+## Populating more characters
+
+The seed data in `db.js` is a small starter set. To pull in more names,
+run:
+
+```bash
+npm run import
+```
+
+This fetches character names from the free [SWAPI](https://www.swapi.tech)
+Star Wars API and cross-references them against a small local lightsaber-
+color lookup in `scripts/import-characters.js` (SWAPI itself doesn't track
+lightsaber colors, since that's fan/reference trivia, not canonical API
+data). Only characters with a known color get inserted; everyone else from
+SWAPI is skipped. Add more entries to the `LIGHTSABER_COLORS` map in that
+file to pull in more characters over time.
+
 ## Project structure
 
 ```
