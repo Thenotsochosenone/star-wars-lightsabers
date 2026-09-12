@@ -106,3 +106,72 @@ h1 {
   color: #ff8080;
   border-color: #5a2a2a;
 }
+
+#hilt-type,
+#affiliation {
+  flex: 1 1 140px;
+}
+
+select#hilt-type,
+select#sort-by {
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #333;
+  background: #1a1d27;
+  color: #f2f2f2;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.toolbar #search {
+  flex: 2 1 220px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #333;
+  background: #1a1d27;
+  color: #f2f2f2;
+}
+
+.toolbar #sort-by {
+  flex: 1 1 160px;
+}
+
+.result-count {
+  color: #6b7180;
+  font-size: 0.85rem;
+  margin: 0 0 14px 2px;
+}
+
+.badges {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 2px;
+}
+
+.badge {
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #23283a;
+  color: #b7bccb;
+  border: 1px solid #333a4d;
+  white-space: nowrap;
+}
+
+.badge.hilt {
+  background: #2a1f3d;
+  color: #d3b8ff;
+  border-color: #4a3766;
+}
+
+.no-results {
+  color: #6b7180;
+  text-align: center;
+  padding: 24px 0;
+}

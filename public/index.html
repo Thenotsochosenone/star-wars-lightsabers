@@ -14,9 +14,29 @@
     <form id="add-form">
       <input type="text" id="name" placeholder="Character name" required>
       <input type="text" id="color" placeholder="Lightsaber color" required>
+      <select id="hilt-type">
+        <option value="">Hilt type (optional)</option>
+        <option>Single-bladed</option>
+        <option>Single-bladed (shoto)</option>
+        <option>Double-bladed</option>
+        <option>Crossguard</option>
+        <option>Curved-hilt</option>
+        <option>Dual-wield (shoto pair)</option>
+      </select>
       <input type="text" id="affiliation" placeholder="Affiliation (optional)">
       <button type="submit">Add Character</button>
     </form>
+
+    <div class="toolbar">
+      <input type="text" id="search" placeholder="Search by name, color, hilt type, or affiliation...">
+      <select id="sort-by">
+        <option value="name">Sort: Name</option>
+        <option value="lightsaber_color">Sort: Color</option>
+        <option value="hilt_type">Sort: Hilt type</option>
+        <option value="affiliation">Sort: Affiliation</option>
+      </select>
+    </div>
+    <p id="result-count" class="result-count"></p>
 
     <div id="character-list" class="character-list"></div>
   </div>
