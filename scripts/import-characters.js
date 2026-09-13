@@ -6,23 +6,57 @@
 const db = require('../db');
 
 const LIGHTSABER_COLORS = {
-  'Luke Skywalker': { color: 'Green', affiliation: 'Jedi', hilt_type: 'Single-bladed' },
-  'Darth Vader': { color: 'Red', affiliation: 'Sith', hilt_type: 'Single-bladed' },
-  'Obi-Wan Kenobi': { color: 'Blue', affiliation: 'Jedi', hilt_type: 'Single-bladed' },
-  'Yoda': { color: 'Green', affiliation: 'Jedi', hilt_type: 'Single-bladed (shoto)' },
-  'Anakin Skywalker': { color: 'Blue', affiliation: 'Jedi (later Sith)', hilt_type: 'Single-bladed' },
-  'Qui-Gon Jinn': { color: 'Green', affiliation: 'Jedi', hilt_type: 'Single-bladed' },
-  'Count Dooku': { color: 'Red', affiliation: 'Sith', hilt_type: 'Curved-hilt' },
-  'Mace Windu': { color: 'Purple', affiliation: 'Jedi', hilt_type: 'Single-bladed' },
-  'Ki-Adi-Mundi': { color: 'Blue', affiliation: 'Jedi', hilt_type: 'Single-bladed' },
-  'Plo Koon': { color: 'Blue', affiliation: 'Jedi', hilt_type: 'Single-bladed' },
-  'Luminara Unduli': { color: 'Green', affiliation: 'Jedi', hilt_type: 'Single-bladed' },
-  'Barriss Offee': { color: 'Green', affiliation: 'Jedi', hilt_type: 'Single-bladed' },
-  'Shaak Ti': { color: 'Yellow', affiliation: 'Jedi', hilt_type: 'Single-bladed' },
-  'Kit Fisto': { color: 'Green', affiliation: 'Jedi', hilt_type: 'Single-bladed' },
-  'Bastila Shan': { color: 'White', affiliation: 'Jedi', hilt_type: 'Single-bladed' },
-  'Revan': { color: 'Red', affiliation: 'Sith', hilt_type: 'Single-bladed' },
-  'Kal Kestis': { color: 'Blue', affiliation: 'Jedi', hilt_type: 'Single-bladed' }
+  // Core
+  'Luke Skywalker': { color: 'Green', affiliation: 'Jedi', era: 'canon', blade_type: 'single', notes: 'Originally blue, then green' },
+  'Darth Vader': { color: 'Red', affiliation: 'Sith', era: 'canon', blade_type: 'single', notes: 'Formerly Anakin' },
+  'Obi-Wan Kenobi': { color: 'Blue', affiliation: 'Jedi', era: 'canon', blade_type: 'single' },
+  'Yoda': { color: 'Green', affiliation: 'Jedi', era: 'canon', blade_type: 'single' },
+  'Anakin Skywalker': { color: 'Blue', affiliation: 'Jedi', era: 'canon', blade_type: 'single', notes: 'Later Darth Vader' },
+  'Qui-Gon Jinn': { color: 'Green', affiliation: 'Jedi', era: 'canon', blade_type: 'single' },
+  'Count Dooku': { color: 'Red', affiliation: 'Sith', era: 'canon', blade_type: 'curved' },
+  'Mace Windu': { color: 'Purple', affiliation: 'Jedi', era: 'canon', blade_type: 'single' },
+  'Darth Maul': { color: 'Red', affiliation: 'Sith', era: 'canon', blade_type: 'double' },
+  'Palpatine': { color: 'Red', affiliation: 'Sith', era: 'canon', blade_type: 'single', notes: 'Darth Sidious' },
+  'Sheev Palpatine': { color: 'Red', affiliation: 'Sith', era: 'canon', blade_type: 'single' },
+
+  // Jedi Council / PT
+  'Ki-Adi-Mundi': { color: 'Blue', affiliation: 'Jedi', era: 'canon', blade_type: 'single' },
+  'Plo Koon': { color: 'Blue', affiliation: 'Jedi', era: 'canon', blade_type: 'single' },
+  'Luminara Unduli': { color: 'Green', affiliation: 'Jedi', era: 'canon', blade_type: 'single' },
+  'Barriss Offee': { color: 'Blue', affiliation: 'Jedi', era: 'canon', blade_type: 'single' },
+  'Shaak Ti': { color: 'Blue', affiliation: 'Jedi', era: 'canon', blade_type: 'single' },
+  'Kit Fisto': { color: 'Green', affiliation: 'Jedi', era: 'canon', blade_type: 'single' },
+  'Aayla Secura': { color: 'Blue', affiliation: 'Jedi', era: 'canon', blade_type: 'single' },
+  'Adi Gallia': { color: 'Blue', affiliation: 'Jedi', era: 'canon', blade_type: 'single' },
+  'Saesee Tiin': { color: 'Green', affiliation: 'Jedi', era: 'canon', blade_type: 'single' },
+  'Agen Kolar': { color: 'Green', affiliation: 'Jedi', era: 'canon', blade_type: 'single' },
+  'Depa Billaba': { color: 'Green', affiliation: 'Jedi', era: 'canon', blade_type: 'single' },
+  'Stass Allie': { color: 'Blue', affiliation: 'Jedi', era: 'canon', blade_type: 'single' },
+  'Quinlan Vos': { color: 'Green', affiliation: 'Jedi', era: 'canon', blade_type: 'single' },
+  'Eeth Koth': { color: 'Green', affiliation: 'Jedi', era: 'canon', blade_type: 'single' },
+
+  // Ahsoka & friends
+  'Ahsoka Tano': { color: 'White', affiliation: 'Ex-Jedi', era: 'canon', blade_type: 'dual', notes: 'Green → Blue → White' },
+  'Asajj Ventress': { color: 'Red', affiliation: 'Dark Jedi', era: 'canon', blade_type: 'dual' },
+  'Savage Opress': { color: 'Red', affiliation: 'Sith', era: 'canon', blade_type: 'double' },
+
+  // Rebels / Jedi survivors
+  'Kanan Jarrus': { color: 'Blue', affiliation: 'Jedi', era: 'canon', blade_type: 'single' },
+  'Ezra Bridger': { color: 'Blue', affiliation: 'Jedi', era: 'canon', blade_type: 'single' },
+  'Cal Kestis': { color: 'Blue', affiliation: 'Jedi', era: 'canon', blade_type: 'single' },
+
+  // Sequel
+  'Rey': { color: 'Yellow', affiliation: 'Jedi', era: 'canon', blade_type: 'single' },
+  'Kylo Ren': { color: 'Red (crossguard)', affiliation: 'First Order', era: 'canon', blade_type: 'crossguard' },
+  'Ben Solo': { color: 'Blue', affiliation: 'Jedi', era: 'canon', blade_type: 'single' },
+
+  // Darksaber related (SWAPI may not have all)
+  'Pre Vizsla': { color: 'Black (Darksaber)', affiliation: 'Mandalorian', era: 'canon', blade_type: 'single' },
+
+  // Legends (SWAPI is mostly film/canon focused, but some names overlap)
+  'Revan': { color: 'Purple', affiliation: 'Jedi / Sith', era: 'legends', blade_type: 'single' },
+  'Bastila Shan': { color: 'Yellow', affiliation: 'Jedi', era: 'legends', blade_type: 'double' },
+  'Satele Shan': { color: 'Blue', affiliation: 'Jedi', era: 'legends', blade_type: 'double' }
 };
 
 const BASE_URL = 'https://www.swapi.tech/api/people';
@@ -53,8 +87,8 @@ async function run() {
   console.log(`Fetched ${people.length} characters from SWAPI.`);
 
   const insert = db.prepare(`
-    INSERT OR IGNORE INTO characters (name, lightsaber_color, affiliation, hilt_type)
-    VALUES (@name, @lightsaber_color, @affiliation, @hilt_type)
+    INSERT OR IGNORE INTO characters (name, lightsaber_color, affiliation, era, blade_type, notes)
+    VALUES (@name, @lightsaber_color, @affiliation, @era, @blade_type, @notes)
   `);
 
   let added = 0;
@@ -63,13 +97,15 @@ async function run() {
     if (!name) continue;
 
     const match = LIGHTSABER_COLORS[name];
-    if (!match) continue; // skip characters we have no lightsaber data for
+    if (!match) continue;
 
     const result = insert.run({
       name,
       lightsaber_color: match.color,
-      affiliation: match.affiliation,
-      hilt_type: match.hilt_type || null
+      affiliation: match.affiliation || null,
+      era: match.era || 'canon',
+      blade_type: match.blade_type || 'single',
+      notes: match.notes || null
     });
     if (result.changes > 0) added++;
   }

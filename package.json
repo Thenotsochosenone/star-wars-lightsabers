@@ -1,7 +1,7 @@
 {
   "name": "star-wars-lightsabers",
-  "version": "1.0.0",
-  "description": "A trivial full-stack app tracking Star Wars characters and their lightsaber colors",
+  "version": "1.1.0",
+  "description": "A full-stack app tracking Star Wars characters and their lightsaber colors (canon + legends)",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

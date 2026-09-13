@@ -9,35 +9,64 @@
 <body>
   <div class="container">
     <h1>⚔️ Lightsaber Registry</h1>
-    <p class="subtitle">A totally official database of who's swinging what color.</p>
+    <p class="subtitle">A wonderfully unnecessary database of who's swinging what color (canon + legends).</p>
 
-    <form id="add-form">
+    <!-- Search & Filters -->
+    <div class="filters">
+      <input type="search" id="search" placeholder="Search name, color, notes…">
+      <select id="filter-color">
+        <option value="">All colors</option>
+        <option value="Blue">Blue</option>
+        <option value="Green">Green</option>
+        <option value="Red">Red</option>
+        <option value="Purple">Purple</option>
+        <option value="Yellow">Yellow</option>
+        <option value="White">White</option>
+        <option value="Orange">Orange</option>
+        <option value="Black">Black / Darksaber</option>
+        <option value="Bronze">Bronze</option>
+      </select>
+      <select id="filter-era">
+        <option value="">All eras</option>
+        <option value="canon">Canon</option>
+        <option value="legends">Legends</option>
+      </select>
+      <select id="filter-blade">
+        <option value="">All blade types</option>
+        <option value="single">Single</option>
+        <option value="double">Double</option>
+        <option value="dual">Dual (pair)</option>
+        <option value="crossguard">Crossguard</option>
+        <option value="curved">Curved</option>
+      </select>
+      <button type="button" id="clear-filters" class="secondary">Clear</button>
+    </div>
+
+    <!-- Add / Edit form -->
+    <form id="character-form">
+      <input type="hidden" id="edit-id">
       <input type="text" id="name" placeholder="Character name" required>
       <input type="text" id="color" placeholder="Lightsaber color" required>
-      <select id="hilt-type">
-        <option value="">Hilt type (optional)</option>
-        <option>Single-bladed</option>
-        <option>Single-bladed (shoto)</option>
-        <option>Double-bladed</option>
-        <option>Crossguard</option>
-        <option>Curved-hilt</option>
-        <option>Dual-wield (shoto pair)</option>
-      </select>
       <input type="text" id="affiliation" placeholder="Affiliation (optional)">
-      <button type="submit">Add Character</button>
+      <select id="era">
+        <option value="canon">Canon</option>
+        <option value="legends">Legends</option>
+      </select>
+      <select id="blade_type">
+        <option value="single">Single</option>
+        <option value="double">Double</option>
+        <option value="dual">Dual (pair)</option>
+        <option value="crossguard">Crossguard</option>
+        <option value="curved">Curved</option>
+      </select>
+      <input type="text" id="notes" placeholder="Notes (optional)">
+      <div class="form-actions">
+        <button type="submit" id="submit-btn">Add Character</button>
+        <button type="button" id="cancel-edit" class="secondary" hidden>Cancel</button>
+      </div>
     </form>
 
-    <div class="toolbar">
-      <input type="text" id="search" placeholder="Search by name, color, hilt type, or affiliation...">
-      <select id="sort-by">
-        <option value="name">Sort: Name</option>
-        <option value="lightsaber_color">Sort: Color</option>
-        <option value="hilt_type">Sort: Hilt type</option>
-        <option value="affiliation">Sort: Affiliation</option>
-      </select>
-    </div>
-    <p id="result-count" class="result-count"></p>
-
+    <div class="stats" id="stats"></div>
     <div id="character-list" class="character-list"></div>
   </div>
   <script src="script.js"></script>
