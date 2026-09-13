@@ -5,7 +5,7 @@ A wonderfully unnecessary full-stack app for tracking Star Wars characters and t
 ## Features
 
 - REST API backed by a local SQLite database
-- Pre-seeded with 50+ familiar Jedi, Sith, Mandalorians and legends characters
+- Pre-seeded with 60+ familiar Jedi, Sith, Mandalorians and legends characters
 - Search + filter by name, color, affiliation, era (canon/legends), and blade type
 - Add, edit, and remove characters from a simple web UI
 - Extra fields: `era`, `blade_type`, `notes`
