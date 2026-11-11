@@ -1,6 +1,6 @@
 # ⚔️ Lightsaber Registry
 
-A wonderfully unnecessary full-stack app for tracking Star Wars characters and the color of their lightsabers (canon **and** legends). Built with Node.js, Express, and SQLite.
+A full-stack app for tracking Star Wars characters and the color of their lightsabers (canon **and** legends). Built with Node.js, Express, and SQLite.
 
 ## Features
 
@@ -83,7 +83,3 @@ This fetches character names from the free [SWAPI](https://www.swapi.tech) and c
 │   └── import-characters.js  # SWAPI importer + color map
 └── lightsabers.db            # created on first run (gitignored)
 ```
-
-## Notes
-
-This repo was built as a series of small commits (scaffold → database → API → frontend → docs → richer model + search/edit). Still a fun side project — idea is to keep growing a useful repository of lightsaber-wielding characters across canon and legends.
